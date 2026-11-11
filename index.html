@@ -88,6 +88,49 @@
     .footer .brand { font-size:32px; }
     .footer p { font-size:10px; letter-spacing:.17em; color:#786a5c; text-transform:uppercase; line-height:2; }
     .to-top { position:fixed; right:18px; bottom:18px; width:42px; height:42px; border:0; border-radius:50%; background:var(--choco); color:white; cursor:pointer; box-shadow:var(--shadow); }
+
+    /* Zoom / lightbox */
+    .zoom { position:relative; display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; overflow:hidden; }
+    .zoom img { transition:transform .6s ease; }
+    .zoom:hover img { transform:scale(1.05); }
+    .zoom:focus-visible { outline:3px solid var(--gold); outline-offset:-3px; }
+    .zoom-icon { position:absolute; right:12px; bottom:12px; width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:rgba(84,66,44,.78); color:#fff; font-size:17px; opacity:0; transition:.25s; }
+    .zoom:hover .zoom-icon, .zoom:focus-visible .zoom-icon { opacity:1; }
+    @media(hover:none) { .zoom-icon { opacity:1; } }
+    .details .zoom { box-shadow:var(--shadow); }
+    .details .zoom img { max-height:430px; box-shadow:none; }
+    .table-panel { max-width:430px; margin:0 auto 34px; box-shadow:var(--shadow); }
+    .table-panel img { width:100%; display:block; }
+    .lb { position:fixed; inset:0; z-index:100; display:none; flex-direction:column; align-items:center; justify-content:center; background:rgba(28,20,13,.94); padding:20px; }
+    .lb.open { display:flex; animation:lbfade .25s ease; }
+    @keyframes lbfade { from{opacity:0} to{opacity:1} }
+    .lb-img { max-width:min(94vw,1300px); max-height:80vh; object-fit:contain; box-shadow:0 20px 70px rgba(0,0,0,.5); user-select:none; touch-action:pan-y; }
+    .lb-cap { margin-top:16px; text-align:center; color:#f3e3d0; }
+    .lb-cap strong { display:block; font-family:"Cormorant Garamond",serif; font-size:26px; font-weight:500; }
+    .lb-cap span { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#caa67c; }
+    .lb-btn { position:absolute; border:0; background:rgba(255,255,255,.1); color:#fff; width:46px; height:46px; border-radius:50%; font-size:22px; cursor:pointer; transition:.2s; }
+    .lb-btn:hover { background:var(--gold); }
+    .lb-close { top:18px; right:18px; }
+    .lb-prev { left:18px; top:50%; transform:translateY(-50%); }
+    .lb-next { right:18px; top:50%; transform:translateY(-50%); }
+    @media(max-width:560px) { .lb-prev,.lb-next { top:auto; bottom:22px; transform:none; } .lb-prev{left:22px} .lb-next{right:22px} }
+    body.lb-lock { overflow:hidden; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    @media(prefers-reduced-motion:reduce) { .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+
+    .programme { background:#f5ece3; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .step { display:flex; gap:16px; align-items:flex-start; padding:24px 22px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 25px rgba(62,43,25,.055); }
+    .step h3 { margin:0 0 4px; color:var(--choco); font-size:28px; }
+    .step p { margin:0 0 8px; color:#827467; font-size:12px; line-height:1.7; }
+    .step .where { color:var(--gold); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+    .maplink { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--choco); border-bottom:1px solid var(--gold); }
+    .maplink:hover { color:var(--gold); }
+    @media(max-width:850px) { .steps { grid-template-columns:1fr; } }
+    .music { position:fixed; left:18px; bottom:18px; z-index:30; display:none; align-items:center; gap:8px; height:42px; padding:0 16px 0 12px; border:0; border-radius:21px; background:var(--choco); color:#fff; font:600 10px Montserrat,sans-serif; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; box-shadow:var(--shadow); }
+    .music.show { display:flex; }
+    .music:hover { background:var(--gold); }
     @media(max-width:850px) {
       .nav { align-items:flex-start; flex-direction:column; }
       .navlinks { gap:13px; }
@@ -116,6 +159,7 @@
       <a class="brand" href="#accueil">Champagne & Élégance</a>
       <div class="navlinks">
         <a href="#univers">Notre univers</a>
+        <a href="#programme">Programme</a>
         <a href="#decoration">Décoration</a>
         <a href="#tables">Noms des tables</a>
         <a href="#palette">Couleurs</a>
@@ -130,14 +174,15 @@
         <div class="eyebrow">Une journée précieuse · Un amour à célébrer</div>
         <h1>Champagne</h1>
         <p>Élégance · Romance · Raffinement</p>
-        <div class="date">21 NOVEMBRE 2026</div><br>
+        <div class="date">21 NOVEMBRE 2026</div>
+        <p style="margin:18px 0 0">Espace Fitsikiana · Andohatanjona, Itaosy</p>
         <a class="button" href="#decoration">Découvrir la décoration</a>
       </div>
     </section>
 
     <section id="univers">
       <div class="wrap details">
-        <img src="images/fond-maries.jpg" alt="Décor principal des mariés, drapés champagne et fleurs">
+        <button class="zoom" type="button" aria-label="Agrandir : Décor principal des mariés"><img src="images/decor-maries.jpg" alt="Décor principal des mariés, drapés champagne et fleurs"><span class="zoom-icon" aria-hidden="true">⤢</span></button>
         <div class="details-copy">
           <div class="kicker">Notre inspiration</div>
           <h2>Un décor tout en douceur</h2>
@@ -164,6 +209,21 @@
       </div>
     </section>
 
+    <section class="programme" id="programme">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Où et comment</div>
+          <h2>Le programme</h2>
+          <p>Trois moments forts, de la commune d'Itaosy jusqu'à la fête.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><span class="table-name-number">1</span><div><h3>La mairie</h3><p class="where">Commune rurale d'Itaosy</p><p>Nos fiançailles officielles, devant le maire.</p><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Commune+rurale+Itaosy" target="_blank" rel="noopener">Voir sur la carte</a></div></article>
+          <article class="step"><span class="table-name-number">2</span><div><h3>Le Vodiondry</h3><p class="where">En plein air · cour de l'espace</p><p>La demande traditionnelle, célébrée dans la cour de l'Espace Fitsikiana.</p><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Espace+Fitsikiana+Andohatanjona+Itaosy" target="_blank" rel="noopener">Voir sur la carte</a></div></article>
+          <article class="step"><span class="table-name-number">3</span><div><h3>La fête</h3><p class="where">Espace Fitsikiana · Andohatanjona, Itaosy</p><p>Fiançailles et réception avec tous nos proches.</p><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Espace+Fitsikiana+Andohatanjona+Itaosy" target="_blank" rel="noopener">Voir sur la carte</a></div></article>
+        </div>
+      </div>
+    </section>
+
     <section id="decoration">
       <div class="wrap">
         <div class="section-head">
@@ -172,17 +232,14 @@
           <p>Chaque espace a été pensé pour composer une seule et même ambiance : raffinée, romantique et accueillante.</p>
         </div>
         <div class="gallery">
-          <article class="card"><img src="images/fond-ceremonie.jpg" alt="Fond de cérémonie fleuri"><div class="card-body"><span class="number">01 — CÉRÉMONIE</span><h3>Fond principal</h3><p>Voilages champagne, compositions florales et détails dorés.</p></div></article>
-          <article class="card"><img src="images/tapis-entree.jpg" alt="Tapis d'entrée"><div class="card-body"><span class="number">02 — ACCUEIL</span><h3>Tapis d'entrée</h3><p>Une allée claire bordée de fleurs et de lanternes lumineuses.</p></div></article>
-          <article class="card"><img src="images/bouquets-tapis.jpg" alt="Bouquets au bord du tapis"><div class="card-body"><span class="number">03 — FLEURS</span><h3>Bouquets du tapis</h3><p>Roses poudrées, fleurs ivoire et feuillages délicats.</p></div></article>
-          <article class="card"><img src="images/chaises.jpg" alt="Chaises avec nœuds champagne"><div class="card-body"><span class="number">04 — ASSISES</span><h3>Chaises</h3><p>Housses claires et grands nœuds en satin champagne.</p></div></article>
-          <article class="card"><img src="images/panneau-bienvenue.jpg" alt="Panneau de bienvenue"><div class="card-body"><span class="number">05 — SIGNALÉTIQUE</span><h3>Panneau de bienvenue</h3><p>Un message d'accueil élégant, encadré de fleurs et de dorures.</p></div></article>
-          <article class="card"><img src="images/liste-invites.jpg" alt="Panneau liste des invités"><div class="card-body"><span class="number">06 — ORGANISATION</span><h3>Liste des invités</h3><p>Un panneau raffiné pour guider chaque invité vers sa table.</p></div></article>
-          <article class="card"><img src="images/photobooth.jpg" alt="Photobooth fleuri"><div class="card-body"><span class="number">07 — SOUVENIRS</span><h3>Photobooth</h3><p>Un fond floral et lumineux pour immortaliser la journée.</p></div></article>
-          <article class="card"><img src="images/fond-maries.jpg" alt="Fond de la table des mariés"><div class="card-body"><span class="number">08 — ESPACE D'HONNEUR</span><h3>Fond des mariés</h3><p>Un décor majestueux avec drapés, fleurs et initiales.</p></div></article>
-          <article class="card"><img src="images/table-maries.jpg" alt="Table des mariés"><div class="card-body"><span class="number">09 — TABLE D'HONNEUR</span><h3>Table des mariés</h3><p>Une table mise en scène avec fleurs généreuses et textile fluide.</p></div></article>
-          <article class="card"><img src="images/table-gateau.jpg" alt="Table du gâteau"><div class="card-body"><span class="number">10 — GOURMANDISE</span><h3>Table du gâteau</h3><p>Un présentoir délicat, des fleurs et une lumière douce.</p></div></article>
-          <article class="card"><img src="images/tables-invites.jpg" alt="Tables des invités"><div class="card-body"><span class="number">11 — RÉCEPTION</span><h3>Tables des invités</h3><p>Centres de table fleuris, bougies et vaisselle élégante.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Tapis d'entrée et bouquets"><img src="images/accueil-tapis.jpg" alt="Tapis d'entrée et bouquets" loading="lazy"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">01 — ACCUEIL</span><h3>Tapis d'entrée & bouquets</h3><p>Une allée claire bordée de fleurs, avec de généreux bouquets sur pied pour accueillir les invités.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Panneau de bienvenue"><img src="images/panneau-bienvenue.jpg" alt="Panneau de bienvenue" loading="lazy" style="object-position:center 50%"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">02 — SIGNALÉTIQUE</span><h3>Panneau de bienvenue</h3><p>Un message d'accueil élégant, encadré de fleurs et de dorures.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Panneau liste des invités sous un parasol"><img src="images/liste-invites.jpg" alt="Panneau liste des invités sous un parasol" loading="lazy" style="object-position:center 52%"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">03 — ORGANISATION</span><h3>Liste des invités</h3><p>Un grand panneau sous parasol, entouré de fleurs, pour guider chaque invité vers sa table.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Photobooth fleuri"><img src="images/photobooth.jpg" alt="Photobooth fleuri" loading="lazy"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">04 — SOUVENIRS</span><h3>Photobooth</h3><p>Un fond floral et lumineux pour immortaliser la journée.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Fond de cérémonie et espace des mariés dans la cour"><img src="images/ceremonie-maries.jpg" alt="Fond principal et espace des mariés dans la cour" loading="lazy"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">05 — COUR EXTÉRIEURE</span><h3>Fond principal & espace des mariés</h3><p>Dans la cour de l'espace : arche fleurie, portraits des futurs mariés et canapé doré.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Espace des mariés avec canapé doré"><img src="images/table-maries.jpg" alt="Fond marié avec fauteuils d'honneur" loading="lazy"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">06 — ESPACE D'HONNEUR</span><h3>Table des mariés</h3><p>Deux fauteuils d'honneur devant un fond drapé, avec un généreux bouquet sur la table.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Tables des invités et chaises à nœuds champagne"><img src="images/reception.jpg" alt="Tables des invités et chaises à nœuds champagne" loading="lazy" style="object-position:center 58%"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">07 — RÉCEPTION</span><h3>Tables & chaises des invités</h3><p>Centres de table fleuris, vaisselle élégante et chaises habillées de nœuds en satin champagne.</p></div></article>
+          <article class="card"><button class="zoom" type="button" aria-label="Agrandir : Gâteau carré des mariés et petits gâteaux des invités"><img src="images/table-gateau.jpg" alt="Gâteau carré des mariés et petits gâteaux des invités" loading="lazy" style="object-position:center 50%"><span class="zoom-icon" aria-hidden="true">⤢</span></button><div class="card-body"><span class="number">08 — GOURMANDISE</span><h3>Table du gâteau</h3><p>Le gâteau carré des mariés sur son socle, et des petits gâteaux individuels prêts à être servis aux invités.</p></div></article>
         </div>
       </div>
     </section>
@@ -195,6 +252,7 @@
           <h2>Les noms de nos tables</h2>
           <p>Dix jolis mots pour célébrer les valeurs et les sentiments qui donnent tout son sens à notre union.</p>
         </div>
+        <button class="zoom table-panel" type="button" aria-label="Agrandir : Panneau des noms de tables"><img src="images/noms-tables.jpg" alt="Panneau des noms de tables" loading="lazy"><span class="zoom-icon" aria-hidden="true">⤢</span></button>
         <div class="table-name-grid">
           <article class="table-name-card"><span class="table-name-number">01</span><div><h3>Élégance</h3><p>Le raffinement de votre union.</p></div></article>
           <article class="table-name-card"><span class="table-name-number">02</span><div><h3>Amour</h3><p>Le sentiment qui vous unit.</p></div></article>
@@ -219,8 +277,85 @@
 
   <footer class="footer">
     <div class="brand">Champagne & Élégance</div>
-    <p>Avec amour · 21 novembre 2026</p>
+    <p>Avec amour · 21 novembre 2026<br>Espace Fitsikiana · Andohatanjona, Itaosy</p>
   </footer>
   <button class="to-top" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image agrandie">
+    <button class="lb-btn lb-close" aria-label="Fermer">✕</button>
+    <button class="lb-btn lb-prev" aria-label="Image précédente">‹</button>
+    <img class="lb-img" id="lbImg" alt="">
+    <button class="lb-btn lb-next" aria-label="Image suivante">›</button>
+    <div class="lb-cap"><strong id="lbTitle"></strong><span id="lbCount"></span></div>
+  </div>
+  <script>
+  (function(){
+    var btns=[].slice.call(document.querySelectorAll('.zoom'));
+    var lb=document.getElementById('lb'), img=document.getElementById('lbImg'),
+        title=document.getElementById('lbTitle'), count=document.getElementById('lbCount');
+    var cur=0, last=null;
+    function titleOf(b){var c=b.closest('.card');var h=c&&c.querySelector('h3');return h?h.textContent:b.querySelector('img').alt;}
+    function show(i){
+      cur=(i+btns.length)%btns.length;
+      var im=btns[cur].querySelector('img');
+      img.src=im.getAttribute('src'); img.alt=im.alt;
+      title.textContent=titleOf(btns[cur]);
+      count.textContent=(cur+1)+' / '+btns.length;
+    }
+    function open(i){last=document.activeElement;show(i);lb.classList.add('open');document.body.classList.add('lb-lock');lb.querySelector('.lb-close').focus();}
+    function close(){lb.classList.remove('open');document.body.classList.remove('lb-lock');if(last)last.focus();}
+    btns.forEach(function(b,i){b.addEventListener('click',function(){open(i);});});
+    lb.querySelector('.lb-close').onclick=close;
+    lb.querySelector('.lb-prev').onclick=function(){show(cur-1);};
+    lb.querySelector('.lb-next').onclick=function(){show(cur+1);};
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      if(e.key==='ArrowLeft')show(cur-1);
+      if(e.key==='ArrowRight')show(cur+1);
+    });
+    var sx=null;
+    lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',function(e){
+      if(sx===null)return; var dx=e.changedTouches[0].clientX-sx; sx=null;
+      if(Math.abs(dx)>50) show(cur+(dx<0?1:-1));
+    });
+    // apparition douce au scroll
+    var els=document.querySelectorAll('.card,.table-name-card,.section-head,.details-copy');
+    els.forEach(function(el){el.classList.add('reveal');});
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+      els.forEach(function(el){io.observe(el);});
+    } else els.forEach(function(el){el.classList.add('in');});
+  })();
+  </script>
+  <audio id="bgm" loop preload="none"><source src="audio/musique.mp3" type="audio/mpeg"></audio>
+  <button class="music" id="musicBtn" type="button" aria-pressed="false"><span id="musicIcon">♪</span><span id="musicTxt">Musique</span></button>
+  <script>
+  (function(){
+    var a=document.getElementById('bgm'), b=document.getElementById('musicBtn'),
+        ic=document.getElementById('musicIcon'), tx=document.getElementById('musicTxt');
+    var wantOff=false; try{wantOff=localStorage.getItem('bgm-off')==='1';}catch(e){}
+    a.volume=.45;
+    function ui(){var on=!a.paused;ic.textContent=on?'❚❚':'♪';tx.textContent=on?'Couper':'Musique';b.setAttribute('aria-pressed',on);}
+    function play(){var p=a.play();if(p&&p.catch)p.catch(function(){});}
+    a.addEventListener('play',ui);a.addEventListener('pause',ui);
+    // le bouton n'apparaît que si le fichier audio existe
+    a.addEventListener('canplay',function(){b.classList.add('show');},{once:true});
+    a.querySelector('source').addEventListener('error',function(){b.classList.remove('show');});
+    a.load();
+    b.addEventListener('click',function(){
+      if(a.paused){play();try{localStorage.removeItem('bgm-off');}catch(e){}}
+      else{a.pause();try{localStorage.setItem('bgm-off','1');}catch(e){}}
+    });
+    // les navigateurs bloquent le son automatique : on démarre au premier geste
+    if(!wantOff){
+      var start=function(){play();['pointerdown','keydown','touchstart'].forEach(function(t){document.removeEventListener(t,start);});};
+      ['pointerdown','keydown','touchstart'].forEach(function(t){document.addEventListener(t,start,{passive:true});});
+      play();
+    }
+  })();
+  </script>
 </body>
 </html>
