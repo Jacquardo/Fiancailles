@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#54422c">
+  <meta name="description" content="Présentation de la décoration de nos fiançailles sur le thème Champagne — 21 novembre 2026.">
+  <title>Nos fiançailles | Thème Champagne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --choco:#54422C; --gold:#B58D62; --beige:#CAA67C;
+      --cream:#FBE4CC; --white:#fff; --ink:#3c3025;
+      --paper:#fffaf5; --line:rgba(84,66,44,.16);
+      --shadow:0 18px 50px rgba(62,43,25,.10);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Montserrat,Arial,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .topbar {
+      position:sticky; top:0; z-index:20; background:rgba(255,250,245,.92);
+      backdrop-filter:blur(14px); border-bottom:1px solid var(--line);
+    }
+    .nav { max-width:1180px; margin:auto; padding:15px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-family:"Cormorant Garamond",serif; font-size:25px; color:var(--choco); letter-spacing:.04em; }
+    .navlinks { display:flex; gap:23px; flex-wrap:wrap; font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+    .navlinks a:hover { color:var(--gold); }
+    .hero {
+      min-height:660px; display:grid; place-items:center; text-align:center; position:relative;
+      overflow:hidden; color:white; padding:100px 24px;
+      background:linear-gradient(rgba(36,27,19,.38),rgba(36,27,19,.52)),url("images/fond-ceremonie.jpg") center 48%/cover;
+    }
+    .hero:after { content:""; position:absolute; inset:18px; border:1px solid rgba(255,255,255,.55); pointer-events:none; }
+    .hero-inner { position:relative; z-index:1; max-width:760px; }
+    .eyebrow { font-size:11px; letter-spacing:.32em; text-transform:uppercase; }
+    h1,h2,h3,.serif { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; }
+    h1 { font-size:clamp(58px,10vw,112px); line-height:.9; margin:25px 0 20px; }
+    .hero p { letter-spacing:.17em; text-transform:uppercase; font-size:12px; line-height:2; }
+    .date { display:inline-block; margin-top:26px; padding:12px 25px; border-top:1px solid rgba(255,255,255,.7); border-bottom:1px solid rgba(255,255,255,.7); letter-spacing:.22em; font-size:12px; }
+    .button { display:inline-block; margin-top:28px; padding:14px 25px; background:var(--gold); color:white; text-transform:uppercase; letter-spacing:.13em; font-size:10px; transition:.25s; }
+    .button:hover { background:var(--choco); transform:translateY(-2px); }
+    section { padding:88px 24px; }
+    .wrap { max-width:1180px; margin:auto; }
+    .section-head { text-align:center; max-width:700px; margin:0 auto 44px; }
+    .kicker { color:var(--gold); text-transform:uppercase; letter-spacing:.25em; font-size:10px; font-weight:600; }
+    h2 { color:var(--choco); font-size:clamp(38px,5vw,58px); line-height:1; margin:13px 0; }
+    .section-head p { color:#786a5c; font-size:13px; line-height:1.9; }
+    .palette { background:#f5ece3; }
+    .swatches { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; max-width:850px; margin:34px auto 0; }
+    .swatch { text-align:center; font-size:10px; letter-spacing:.06em; color:#655546; }
+    .swatch-color { height:90px; border-radius:3px; margin-bottom:11px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .card { background:white; box-shadow:var(--shadow); overflow:hidden; transition:transform .3s,box-shadow .3s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 22px 55px rgba(62,43,25,.16); }
+    .card img { width:100%; height:245px; display:block; object-fit:cover; }
+    .card-body { padding:20px 21px 23px; }
+    .number { color:var(--gold); font-size:10px; letter-spacing:.2em; }
+    .card h3 { color:var(--choco); font-size:27px; margin:7px 0 5px; }
+    .card p { color:#827467; font-size:11px; line-height:1.8; margin:0; }
+
+    .table-names { background:#fffaf5; }
+    .table-name-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:900px; margin:auto; }
+    .table-name-card {
+      display:flex; align-items:center; gap:18px; padding:19px 22px;
+      background:#fff; border:1px solid var(--line); box-shadow:0 8px 25px rgba(62,43,25,.055);
+    }
+    .table-name-number {
+      flex:0 0 43px; height:43px; display:grid; place-items:center;
+      border:1px solid var(--gold); border-radius:50%; color:var(--gold);
+      font-family:"Cormorant Garamond",Georgia,serif; font-size:20px;
+    }
+    .table-name-card h3 { margin:0 0 4px; color:var(--choco); font-size:27px; }
+    .table-name-card p { margin:0; color:#827467; font-size:11px; line-height:1.7; }
+    @media(max-width:560px) { .table-name-grid { grid-template-columns:1fr; } }
+
+    .quote { background:var(--choco); color:#fff7ed; text-align:center; padding:82px 24px; }
+    .quote h2 { color:#fff7ed; max-width:800px; margin:18px auto; line-height:1.1; }
+    .quote p { color:#e6d5c2; font-size:11px; letter-spacing:.18em; text-transform:uppercase; }
+    .details { display:grid; grid-template-columns:1fr 1fr; gap:35px; align-items:center; }
+    .details img { width:100%; max-height:430px; object-fit:cover; box-shadow:var(--shadow); }
+    .details-copy { padding:15px 3vw; }
+    .details-copy p { font-size:13px; line-height:2; color:#786a5c; }
+    .details-copy h2 { font-size:48px; }
+    .footer { text-align:center; background:#f2e5d8; padding:50px 20px; }
+    .footer .brand { font-size:32px; }
+    .footer p { font-size:10px; letter-spacing:.17em; color:#786a5c; text-transform:uppercase; line-height:2; }
+    .to-top { position:fixed; right:18px; bottom:18px; width:42px; height:42px; border:0; border-radius:50%; background:var(--choco); color:white; cursor:pointer; box-shadow:var(--shadow); }
+    @media(max-width:850px) {
+      .nav { align-items:flex-start; flex-direction:column; }
+      .navlinks { gap:13px; }
+      .gallery { grid-template-columns:repeat(2,1fr); }
+      .card img { height:220px; }
+    }
+    @media(max-width:560px) {
+      section { padding:65px 17px; }
+      .hero { min-height:570px; }
+      .nav { padding:13px 17px; }
+      .brand { font-size:23px; }
+      .navlinks { font-size:9px; gap:10px 14px; }
+      .gallery { grid-template-columns:1fr; gap:17px; }
+      .card img { height:250px; }
+      .swatches { grid-template-columns:repeat(2,1fr); }
+      .swatch:last-child { grid-column:span 2; }
+      .swatch-color { height:65px; }
+      .details { grid-template-columns:1fr; }
+      .details-copy { padding:5px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#accueil">Champagne & Élégance</a>
+      <div class="navlinks">
+        <a href="#univers">Notre univers</a>
+        <a href="#decoration">Décoration</a>
+        <a href="#tables">Noms des tables</a>
+        <a href="#palette">Couleurs</a>
+        <a href="#date">La célébration</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-inner">
+        <div class="eyebrow">Une journée précieuse · Un amour à célébrer</div>
+        <h1>Champagne</h1>
+        <p>Élégance · Romance · Raffinement</p>
+        <div class="date">21 NOVEMBRE 2026</div><br>
+        <a class="button" href="#decoration">Découvrir la décoration</a>
+      </div>
+    </section>
+
+    <section id="univers">
+      <div class="wrap details">
+        <img src="images/fond-maries.jpg" alt="Décor principal des mariés, drapés champagne et fleurs">
+        <div class="details-copy">
+          <div class="kicker">Notre inspiration</div>
+          <h2>Un décor tout en douceur</h2>
+          <p>Une atmosphère lumineuse et chaleureuse, imaginée autour des nuances champagne, ivoire, beige poudré et or. Les fleurs délicates, les bougies et les tissus fluides créent un cadre élégant pour célébrer un moment inoubliable.</p>
+          <a class="button" href="#palette">Voir la palette</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="palette" id="palette">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">L'harmonie des couleurs</div>
+          <h2>La palette Champagne</h2>
+          <p>Cinq teintes complémentaires pour garder une décoration cohérente du tapis d'entrée aux tables de réception.</p>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-color" style="background:#54422C"></div>Chocolat<br>#54422C</div>
+          <div class="swatch"><div class="swatch-color" style="background:#B58D62"></div>Champagne doré<br>#B58D62</div>
+          <div class="swatch"><div class="swatch-color" style="background:#CAA67C"></div>Beige champagne<br>#CAA67C</div>
+          <div class="swatch"><div class="swatch-color" style="background:#FBE4CC"></div>Crème poudré<br>#FBE4CC</div>
+          <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #eee"></div>Blanc<br>#FFFFFF</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="decoration">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Les détails de la réception</div>
+          <h2>Notre décoration</h2>
+          <p>Chaque espace a été pensé pour composer une seule et même ambiance : raffinée, romantique et accueillante.</p>
+        </div>
+        <div class="gallery">
+          <article class="card"><img src="images/fond-ceremonie.jpg" alt="Fond de cérémonie fleuri"><div class="card-body"><span class="number">01 — CÉRÉMONIE</span><h3>Fond principal</h3><p>Voilages champagne, compositions florales et détails dorés.</p></div></article>
+          <article class="card"><img src="images/tapis-entree.jpg" alt="Tapis d'entrée"><div class="card-body"><span class="number">02 — ACCUEIL</span><h3>Tapis d'entrée</h3><p>Une allée claire bordée de fleurs et de lanternes lumineuses.</p></div></article>
+          <article class="card"><img src="images/bouquets-tapis.jpg" alt="Bouquets au bord du tapis"><div class="card-body"><span class="number">03 — FLEURS</span><h3>Bouquets du tapis</h3><p>Roses poudrées, fleurs ivoire et feuillages délicats.</p></div></article>
+          <article class="card"><img src="images/chaises.jpg" alt="Chaises avec nœuds champagne"><div class="card-body"><span class="number">04 — ASSISES</span><h3>Chaises</h3><p>Housses claires et grands nœuds en satin champagne.</p></div></article>
+          <article class="card"><img src="images/panneau-bienvenue.jpg" alt="Panneau de bienvenue"><div class="card-body"><span class="number">05 — SIGNALÉTIQUE</span><h3>Panneau de bienvenue</h3><p>Un message d'accueil élégant, encadré de fleurs et de dorures.</p></div></article>
+          <article class="card"><img src="images/liste-invites.jpg" alt="Panneau liste des invités"><div class="card-body"><span class="number">06 — ORGANISATION</span><h3>Liste des invités</h3><p>Un panneau raffiné pour guider chaque invité vers sa table.</p></div></article>
+          <article class="card"><img src="images/photobooth.jpg" alt="Photobooth fleuri"><div class="card-body"><span class="number">07 — SOUVENIRS</span><h3>Photobooth</h3><p>Un fond floral et lumineux pour immortaliser la journée.</p></div></article>
+          <article class="card"><img src="images/fond-maries.jpg" alt="Fond de la table des mariés"><div class="card-body"><span class="number">08 — ESPACE D'HONNEUR</span><h3>Fond des mariés</h3><p>Un décor majestueux avec drapés, fleurs et initiales.</p></div></article>
+          <article class="card"><img src="images/table-maries.jpg" alt="Table des mariés"><div class="card-body"><span class="number">09 — TABLE D'HONNEUR</span><h3>Table des mariés</h3><p>Une table mise en scène avec fleurs généreuses et textile fluide.</p></div></article>
+          <article class="card"><img src="images/table-gateau.jpg" alt="Table du gâteau"><div class="card-body"><span class="number">10 — GOURMANDISE</span><h3>Table du gâteau</h3><p>Un présentoir délicat, des fleurs et une lumière douce.</p></div></article>
+          <article class="card"><img src="images/tables-invites.jpg" alt="Tables des invités"><div class="card-body"><span class="number">11 — RÉCEPTION</span><h3>Tables des invités</h3><p>Centres de table fleuris, bougies et vaisselle élégante.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="table-names" id="tables">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Une place, une émotion</div>
+          <h2>Les noms de nos tables</h2>
+          <p>Dix jolis mots pour célébrer les valeurs et les sentiments qui donnent tout son sens à notre union.</p>
+        </div>
+        <div class="table-name-grid">
+          <article class="table-name-card"><span class="table-name-number">01</span><div><h3>Élégance</h3><p>Le raffinement de votre union.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">02</span><div><h3>Amour</h3><p>Le sentiment qui vous unit.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">03</span><div><h3>Romance</h3><p>La beauté de votre histoire.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">04</span><div><h3>Passion</h3><p>La flamme de votre amour.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">05</span><div><h3>Bonheur</h3><p>Une vie remplie de joie.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">06</span><div><h3>Éternité</h3><p>Un amour sans fin.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">07</span><div><h3>Promesse</h3><p>L'engagement de deux cœurs.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">08</span><div><h3>Tendresse</h3><p>La douceur de votre relation.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">09</span><div><h3>Complicité</h3><p>Deux personnes, une seule histoire.</p></div></article>
+          <article class="table-name-card"><span class="table-name-number">10</span><div><h3>Félicité</h3><p>Le bonheur d'être ensemble.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" id="date">
+      <div class="kicker" style="color:#e6c9a8">À retenir</div>
+      <h2>Un jour unique, une ambiance inoubliable.</h2>
+      <p>Nos fiançailles · 21 novembre 2026</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand">Champagne & Élégance</div>
+    <p>Avec amour · 21 novembre 2026</p>
+  </footer>
+  <button class="to-top" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>
